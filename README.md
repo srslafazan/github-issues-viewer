@@ -21,6 +21,10 @@
 - Load-more functionality
 - Tests
 - Route guards to handle issues such as rate-limiting
+- Reduce bundle size
+- Clean up inline styles
+- Improve edge-cases and user experience around search component & debounce, etc
+- UX improvements
 
 ## Setup
 
