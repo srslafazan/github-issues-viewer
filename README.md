@@ -19,7 +19,7 @@
 
 - Better search querying for repos
 - Load-more functionality
-- Tests
+- Expand Tests (unit)
 - Route guards to handle issues such as rate-limiting
 - Reduce bundle size
 - Clean up inline styles
@@ -31,6 +31,14 @@
 ```bash
 pnpm install
 ```
+
+Create a `.env` file with a GitHub access token.
+
+```bash
+GITHUB_TOKEN="ghp_vfd1PgiAiD___________________"
+```
+
+NextJS automatically loads this environment file.
 
 ## Start (dev)
 
@@ -48,4 +56,16 @@ pnpm build
 
 ```bash
 pnpm start
+```
+
+## Test
+
+Tests will run with Cypress.
+
+```bash
+pnpm test
+```
+
+```bash
+pnpmp test:ci
 ```

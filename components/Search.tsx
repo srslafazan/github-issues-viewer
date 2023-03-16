@@ -4,7 +4,7 @@ import styles from "@/styles/Search.module.css";
 import Select from "react-select/async";
 import { useRouter } from "next/router";
 
-export default function Search() {
+export default function Search(props: any) {
   const router = useRouter();
   const { owner, repo } = router.query;
   const [filter, setFilter] = React.useState("");
@@ -33,7 +33,7 @@ export default function Search() {
     .filter(({ value }) => value.indexOf(filter) !== -1);
 
   return (
-    <div className={styles.search}>
+    <div className={styles.search} {...(props || {})}>
       <Select
         cacheOptions={true}
         placeholder="Search for repos"

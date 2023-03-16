@@ -77,7 +77,7 @@ export const RepoSearchProvider = (props: any) => {
   };
 
   const searchReposDebounce = React.useCallback(
-    debounce(searchRepos, 500, { leading: true, trailing: true }),
+    debounce(searchRepos, 500, { leading: false, trailing: true }),
     []
   );
   return (

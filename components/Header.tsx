@@ -22,10 +22,14 @@ export const Header = () => {
             alt="logo"
             width="30"
             height="30"
+            data-test-id="header-logo"
           />
-          <h1 style={{ margin: "0 0 0 10px" }}>Presence Learning</h1>
+          <h1 style={{ margin: "0 0 0 10px" }} data-test-id="header-title">
+            Presence Learning
+          </h1>
         </div>
         <div
+          data-test-id="header-subtitle"
           style={{
             color: "black",
             margin: "5px 0 20px 41px",
@@ -35,7 +39,7 @@ export const Header = () => {
           GitHub Issue Viewer
         </div>
       </div>
-      <Search />
+      <Search data-test-id="header-search" />
     </header>
   );
 };
