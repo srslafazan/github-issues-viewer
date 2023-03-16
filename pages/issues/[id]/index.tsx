@@ -5,8 +5,6 @@ import { octokit } from "@/lib/octokit";
 export default function Issue() {
   const router = useRouter();
   const { id, owner, repo, number } = router.query;
-  console.log(router);
-  console.log(router.query);
   const [issue, setIssue] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
 
@@ -20,7 +18,6 @@ export default function Issue() {
           issue_number: parseInt(number as string),
         })
         .then((r: any) => {
-          console.log("r", r);
           setIssue(r?.data);
         })
         .catch((e) => console.error(e))

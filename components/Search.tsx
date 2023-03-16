@@ -32,7 +32,6 @@ export default function Search() {
     }))
     .filter(({ value }) => value.indexOf(filter) !== -1);
 
-  console.log(`${owner}/${repo}`);
   return (
     <div className={styles.search}>
       <Select

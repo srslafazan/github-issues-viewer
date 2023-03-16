@@ -41,7 +41,6 @@ export const sendFetchIssuesRequest = async ({
   per_page,
   ...rest
 }: FetchIssuesParams): Promise<any> => {
-  console.log("request for repo", owner, repo, page, per_page, rest);
   return octokit.rest.issues.listForRepo({
     owner: owner || "tensorflow",
     repo: repo || "tensorflow",
