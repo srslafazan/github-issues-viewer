@@ -1,10 +1,12 @@
 import React from "react";
-// import Head from "next/head";
 
 export default function Home() {
   return (
-    <>
-      <div>Home</div>
-    </>
+    <main>
+      <h2>Repos</h2>
+      <div>
+        <p>Search for repos and view their issues.</p>
+      </div>
+    </main>
   );
 }

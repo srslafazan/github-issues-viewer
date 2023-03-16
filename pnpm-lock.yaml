@@ -11,6 +11,7 @@ specifiers:
   eslint-config-next: 13.2.4
   lodash: ^4.17.21
   next: 13.2.4
+  normalize.css: ^8.0.1
   octokit: ^2.0.14
   react: 18.2.0
   react-dom: 18.2.0
@@ -28,6 +29,7 @@ dependencies:
   eslint-config-next: 13.2.4_vgl77cfdswitgr47lm5swmv43m
   lodash: 4.17.21
   next: 13.2.4_biqbaboplfbrettd7655fr4n2y
+  normalize.css: 8.0.1
   octokit: 2.0.14
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -2244,6 +2246,10 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
+    dev: false
+
+  /normalize.css/8.0.1:
+    resolution: {integrity: sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==}
     dev: false
 
   /object-assign/4.1.1:

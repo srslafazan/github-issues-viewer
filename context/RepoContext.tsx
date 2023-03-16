@@ -1,5 +1,6 @@
 import { octokit } from "@/lib/octokit";
 import React, { Context } from "react";
+import { debounce } from "lodash";
 
 export type RepoContextType = {
   repos: any[];
@@ -8,6 +9,7 @@ export type RepoContextType = {
   setLoading: Function;
   params: SearchReposParams;
   searchRepos: Function;
+  searchReposDebounce: Function;
 };
 
 const defaultContext: RepoContextType = {
@@ -16,6 +18,7 @@ const defaultContext: RepoContextType = {
   loading: false,
   setLoading: () => {},
   searchRepos: () => {},
+  searchReposDebounce: () => {},
   params: {
     query: "",
     page: 1,
@@ -39,7 +42,7 @@ export const sendSearchReposRequest = async ({
   ...rest
 }: SearchReposParams): Promise<any> => {
   return octokit.rest.search.repos({
-    q: query || "",
+    q: query || "org:presencelearning",
     page,
     per_page,
     headers: {
@@ -57,13 +60,26 @@ export const RepoSearchProvider = (props: any) => {
   const [loading, setLoading] = React.useState(false);
   const [repos, setRepos] = React.useState([]);
 
-  const searchRepos = (params: SearchReposParams) => {
-    setSearchReposParams(params);
-    sendSearchReposRequest(params).then((r) => {
-      setLoading(false);
-      setRepos(r?.data?.items);
+  const searchRepos = async (params: SearchReposParams) => {
+    return new Promise((resolve, _reject) => {
+      setSearchReposParams(params);
+      sendSearchReposRequest(params)
+        .then((r) => {
+          setRepos(r?.data?.items);
+          resolve(r?.data?.items);
+        })
+        .catch((e) => {
+          console.error(e);
+          resolve([]);
+        })
+        .finally(() => setLoading(false));
     });
   };
+
+  const searchReposDebounce = React.useCallback(
+    debounce(searchRepos, 500, { leading: true, trailing: true }),
+    []
+  );
   return (
     <RepoContext.Provider
       value={{
@@ -73,6 +89,7 @@ export const RepoSearchProvider = (props: any) => {
         loading,
         setLoading,
         searchRepos,
+        searchReposDebounce,
       }}
     >
       {props.children}

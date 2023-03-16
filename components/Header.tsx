@@ -1,10 +1,41 @@
+import Image from "next/image";
+import { useRouter } from "next/router";
+
 import Search from "./Search";
 
 export const Header = () => {
+  const router = useRouter();
   return (
-    <header>
-      <h1>Presence</h1>
+    <header style={{ padding: "10px 20px" }}>
+      <div
+        style={{
+          color: "#ff5a60",
+          margin: "0 0 20px 0",
+        }}
+      >
+        <div
+          onClick={() => router.push("/")}
+          style={{ cursor: "pointer", display: "flex", alignItems: "center" }}
+        >
+          <Image
+            src="https://presencelearning.com/wp-content/themes/presence/favicons/favicon.svg"
+            alt="logo"
+            width="30"
+            height="30"
+          />
+          <h1 style={{ margin: "0 0 0 10px" }}>Presence Learning</h1>
+        </div>
+        <div
+          style={{
+            color: "black",
+            margin: "5px 0 20px 41px",
+            fontWeight: "500",
+          }}
+        >
+          GitHub Issue Viewer
+        </div>
+      </div>
       <Search />
     </header>
   );
-}
+};
